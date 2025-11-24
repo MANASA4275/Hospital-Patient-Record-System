@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura - Hospital Patient Record System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-hospital-heart"></i> AURA</h2>
+                <p>Patient Record System</p>
+            </div>
+            <div class="sidebar-menu">
+                <ul>
+                    <li class="active"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-user-injured"></i> Patients</a></li>
+                    <li><a href="#"><i class="fas fa-stethoscope"></i> Clinical</a></li>
+                    <li><a href="#"><i class="fas fa-pills"></i> Medications</a></li>
+                    <li><a href="#"><i class="fas fa-flask"></i> Lab Results</a></li>
+                    <li><a href="#"><i class="fas fa-calendar-check"></i> Appointments</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search patients, records...">
+                </div>
+                <div class="user-actions">
+                    <div class="notification-bell">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <div class="user-avatar">DR</div>
+                        <div class="user-info">
+                            <div>Dr. Sarah Evans</div>
+                            <div style="font-size: 12px; color: var(--gray);">Cardiologist</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content">
+                <div class="page-title">
+                    <h1>Patient Dashboard</h1>
+                    <button id="newPatientBtn" style="background: var(--primary); color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">
+                        <i class="fas fa-plus"></i> New Patient
+                    </button>
+                </div>
+
+                <!-- Dashboard Cards -->
+                <div class="dashboard-cards">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Today's Appointments</h3>
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="stats">
+                                <div class="stat">
+                                    <div class="stat-value">12</div>
+                                    <div class="stat-label">Scheduled</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">8</div>
+                                    <div class="stat-label">Completed</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">2</div>
+                                    <div class="stat-label">Canceled</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Patient Statistics</h3>
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="stats">
+                                <div class="stat">
+                                    <div class="stat-value">42</div>
+                                    <div class="stat-label">Admitted</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">18</div>
+                                    <div class="stat-label">Discharged</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">7</div>
+                                    <div class="stat-label">New Today</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Critical Alerts</h3>
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="stats">
+                                <div class="stat">
+                                    <div class="stat-value" style="color: var(--danger);">3</div>
+                                    <div class="stat-label">Medication</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value" style="color: var(--danger);">2</div>
+                                    <div class="stat-label">Lab Results</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value" style="color: var(--danger);">1</div>
+                                    <div class="stat-label">Allergies</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Patient List -->
+                <div class="patient-list">
+                    <div class="card-header">
+                        <h3>Recent Patients</h3>
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Patient ID</th>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                    <th>Condition</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>PT-7894</td>
+                                    <td>Alistair Finch</td>
+                                    <td>68</td>
+                                    <td>Cardiac Arrhythmia</td>
+                                    <td><span class="status-badge status-admitted">Admitted</span></td>
+                                    <td><button class="view-patient-btn" data-patient="Alistair Finch">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td>PT-5421</td>
+                                    <td>Martha Johnson</td>
+                                    <td>72</td>
+                                    <td>Pneumonia</td>
+                                    <td><span class="status-badge status-observation">Observation</span></td>
+                                    <td><button class="view-patient-btn" data-patient="Martha Johnson">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td>PT-8765</td>
+                                    <td>Robert Chen</td>
+                                    <td>45</td>
+                                    <td>Appendicitis</td>
+                                    <td><span class="status-badge status-admitted">Admitted</span></td>
+                                    <td><button class="view-patient-btn" data-patient="Robert Chen">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td>PT-1234</td>
+                                    <td>Sarah Williams</td>
+                                    <td>34</td>
+                                    <td>Hypertension</td>
+                                    <td><span class="status-badge status-discharged">Discharged</span></td>
+                                    <td><button class="view-patient-btn" data-patient="Sarah Williams">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td>PT-6653</td>
+                                    <td>James Wilson</td>
+                                    <td>59</td>
+                                    <td>Diabetes Management</td>
+                                    <td><span class="status-badge status-observation">Observation</span></td>
+                                    <td><button class="view-patient-btn" data-patient="James Wilson">View</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Patient Profile -->
+                <div style="margin-top: 30px;">
+                    <div class="page-title">
+                        <h1>Patient Profile: Alistair Finch</h1>
+                    </div>
+                    
+                    <div class="patient-profile">
+                        <!-- Patient Info -->
+                        <div class="patient-info">
+                            <div class="patient-header">
+                                <div class="patient-avatar">AF</div>
+                                <div class="patient-details">
+                                    <h2>Alistair Finch</h2>
+                                    <div class="patient-meta">
+                                        <div>68 years old • Male</div>
+                                        <div>PT-7894 • Room 304</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="critical-info">
+                                <h3><i class="fas fa-exclamation-circle"></i> Critical Information</h3>
+                                <div class="info-item">
+                                    <span>Blood Type:</span>
+                                    <span>O+</span>
+                                </div>
+                                <div class="info-item">
+                                    <span>Allergies:</span>
+                                    <span style="color: var(--danger);">Penicillin, Shellfish</span>
+                                </div>
+                                <div class="info-item">
+                                    <span>Last Update:</span>
+                                    <span>2 hours ago</span>
+                                </div>
+                            </div>
+                            
+                            <h3 style="margin: 15px 0 10px 0;">Contact Information</h3>
+                            <div class="info-item">
+                                <span>Phone:</span>
+                                <span>(555) 123-4567</span>
+                            </div>
+                            <div class="info-item">
+                                <span>Emergency Contact:</span>
+                                <span>Emily Finch (Daughter)</span>
+                            </div>
+                            <div class="info-item">
+                                <span>Emergency Phone:</span>
+                                <span>(555) 987-6543</span>
+                            </div>
+                            
+                            <h3 style="margin: 15px 0 10px 0;">Medical Details</h3>
+                            <div class="info-item">
+                                <span>Primary Diagnosis:</span>
+                                <span>Cardiac Arrhythmia</span>
+                            </div>
+                            <div class="info-item">
+                                <span>Attending Physician:</span>
+                                <span>Dr. Sarah Evans</span>
+                            </div>
+                            <div class="info-item">
+                                <span>Admission Date:</span>
+                                <span>Oct 27, 2023</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Clinical Timeline -->
+                        <div class="clinical-timeline">
+                            <h3 style="margin-bottom: 20px;">Clinical Timeline</h3>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-date">Today, 08:30 AM</div>
+                                    <div class="timeline-text">Administered Amiodarone 200mg for arrhythmia</div>
+                                    <div class="timeline-author">By: Nurse Maria</div>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-date">Today, 07:15 AM</div>
+                                    <div class="timeline-text">Vitals recorded: BP 130/85, HR 72, Temp 98.6°F</div>
+                                    <div class="timeline-author">By: Nurse James</div>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-date">Today, 00:45 AM</div>
+                                    <div class="timeline-text">Critical lab result received: Elevated Troponin levels</div>
+                                    <div class="timeline-author">By: Lab System</div>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-date">Yesterday, 11:30 PM</div>
+                                    <div class="timeline-text">Patient admitted with chest pains. Initial ECG showed atrial fibrillation</div>
+                                    <div class="timeline-author">By: Dr. Evans</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
